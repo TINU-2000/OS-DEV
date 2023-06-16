@@ -12,7 +12,7 @@ void printColorChar(char , char);
 void getDecAscii(int);
 
 char* TM_START;
-char NumberAscii[10];
+char NumberAscii[11];
 int CELL;
 
 int start(){
@@ -103,29 +103,31 @@ void printColorChar(char c , char co){
 	CELL += 2;	
 }
 
-void getDecAscii(int num){
-	if(num == 0){
-		NumberAscii[0] = '0';
-		return;
-	}
-	char NUM[10];
-	int i = 0 , j = 0;
-	while(num > 0){
-		NUM[i] = num % 10;
-		num /= 10;
-		i++;
-	}
-	i--;
-	while(i >= 0){
-		NumberAscii[j] = NUM[i];
-		i--;
-		j++;
-	}
-	NumberAscii[j] = 'J';
-	j = 0;
-	while(NumberAscii[j] != 'J'){
-		NumberAscii[j] = '0' + NumberAscii[j];
-		j++;
-	}
-	NumberAscii[j] = 0;
+void getDecAscii(int num) {
+    // Corrected version of getDecAscii function from os-dev book
+   if (num == 0) {
+        NumberAscii[0] = '0';
+        NumberAscii[1] = '\0'; 
+        return;
+    }
+
+    int i = 0;
+
+    while (num > 0) {
+        NumberAscii[i] = (num % 10) + '0';
+        num /= 10;
+        i++;
+    }
+    NumberAscii[i] = '\0';
+
+    // Reverse the string
+    int left = 0;
+    int right = i - 1;
+    while (left < right) {
+        char temp = NumberAscii[left];
+        NumberAscii[left] = NumberAscii[right];
+        NumberAscii[right] = temp;
+        left++;
+        right--;
+    }
 }
