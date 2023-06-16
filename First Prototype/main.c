@@ -33,7 +33,7 @@ unsigned char inportb(unsigned short);
 void outportb(unsigned short , unsigned char);
 
 
-char NumberAscii[10];
+char NumberAscii[11];
 int CELL;
 
 
