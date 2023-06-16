@@ -149,7 +149,7 @@ void getDecAscii(int num) {
         NumberAscii[0] = '0';
         NumberAscii[1] = '\0'; 
         return;
-    }
+   }
 
     int i = 0;
 
