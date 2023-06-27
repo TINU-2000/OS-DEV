@@ -144,7 +144,6 @@ void printColorChar(char c , char co){
 }
 
 void getDecAscii(int num) {
-    // Corrected version of getDecAscii function from os-dev book
     if (num == 0) {
         NumberAscii[0] = '0';
         NumberAscii[1] = '\0'; 
