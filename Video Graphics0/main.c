@@ -9,8 +9,6 @@ void scroll();
 void printColorString(char* , char);
 void printColorChar(char , char);
 
-void getDecAscii(int);
-
 char* TM_START;
 int CELL;
 
