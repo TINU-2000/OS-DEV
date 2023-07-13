@@ -18,8 +18,6 @@ void scroll();
 void printColorString(char* , char);
 void printColorChar(char , char);
 
-void getDecAscii(int);
-
 void initIDT();
 extern  void loadIdt();
 extern  void isr1_Handler();
@@ -31,7 +29,6 @@ unsigned char inportb(unsigned short);
 void outportb(unsigned short , unsigned char);
 
 char* TM_START;
-char NumberAscii[11];
 int CELL;
 
 struct IDT_ENTRY{
@@ -135,34 +132,6 @@ void printColorChar(char c , char co){
 	*(TM_START + CELL) = c;
 	*(TM_START + CELL + 1) = co;
 	CELL += 2;	
-}
-
-void getDecAscii(int num) {
-   if (num == 0) {
-        NumberAscii[0] = '0';
-        NumberAscii[1] = '\0'; 
-        return;
-   }
-
-    int i = 0;
-
-    while (num > 0) {
-        NumberAscii[i] = (num % 10) + '0';
-        num /= 10;
-        i++;
-    }
-    NumberAscii[i] = '\0';
-
-    // Reverse the string
-    int left = 0;
-    int right = i - 1;
-    while (left < right) {
-        char temp = NumberAscii[left];
-        NumberAscii[left] = NumberAscii[right];
-        NumberAscii[right] = temp;
-        left++;
-        right--;
-    }
 }
 
 void initIDT(){
